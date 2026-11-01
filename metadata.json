@@ -1,0 +1,8 @@
+{
+  "name": "CareercraftAI",
+  "description": "An integrated AI platform for student performance, personalized learning, resume building, and career growth.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

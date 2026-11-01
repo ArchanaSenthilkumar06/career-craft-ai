@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+:root {
+  --canva-cyan: #00C4CC;
+  --canva-purple: #7D2AE8;
+  --canva-purple-hover: #6c20d4;
+  --canva-gradient: linear-gradient(135deg, #00C4CC 0%, #7D2AE8 100%);
+  --bg-primary: #F3F4F7;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F8F9FC;
+  --border-color: #E2E6EF;
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg-primary: #0E1318;
+  --bg-card: #181E27;
+  --bg-card-subtle: #13171F;
+  --border-color: #262E3D;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9FAAC0;
+  --text-muted: #647087;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #111827;
+    background-color: #F3F4F7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.011em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    color: #FFFFFF;
+    background-color: #0E1318;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Canva Gradient Elements */
+.canva-gradient-bg {
+  background: linear-gradient(135deg, #00C4CC 0%, #7D2AE8 100%);
+}
+
+.canva-gradient-text {
+  background: linear-gradient(135deg, #00C4CC 0%, #8B3DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================================
+   CANVA DARK MODE - METICULOUS COMPONENT-LEVEL CONTRAST
+   ======================================================== */
+
+/* Surface & Cards */
+html.dark .bg-white {
+  background-color: #181E27 !important;
+  color: #F1F5F9;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/40 {
+  background-color: #13171F !important;
+  color: #CBD5E1;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1A222F !important;
+  color: #CBD5E1;
+}
+
+/* Borders */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-300 {
+  border-color: #262E3D !important;
+}
+
+/* Text Hierarchy */
+html.dark .text-slate-900 {
+  color: #FFFFFF !important;
+}
+
+html.dark .text-slate-800 {
+  color: #E2E8F0 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #CBD5E1 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #9FAAC0 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #79859C !important;
+}
+
+/* ========================================================
+   CORRECTED DARK MODE PILLS, ALERTS & BADGES (NO WASHED OUT WHITE)
+   ======================================================== */
+
+/* Emerald / Success Badges */
+html.dark .bg-emerald-50,
+html.dark .bg-emerald-50\/60,
+html.dark .bg-emerald-50\/50,
+html.dark .bg-emerald-50\/40,
+html.dark .bg-emerald-100 {
+  background-color: rgba(16, 185, 129, 0.16) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  color: #34D399 !important;
+}
+
+/* Amber / Warning Badges */
+html.dark .bg-amber-50,
+html.dark .bg-amber-50\/70,
+html.dark .bg-amber-50\/60,
+html.dark .bg-amber-100 {
+  background-color: rgba(245, 158, 11, 0.16) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #FBBF24 !important;
+}
+html.dark .text-amber-900,
+html.dark .text-amber-800 {
+  color: #FCD34D !important;
+}
+
+/* Rose / Error / Gap Badges */
+html.dark .bg-rose-50,
+html.dark .bg-rose-100 {
+  background-color: rgba(244, 63, 94, 0.16) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  color: #FB7185 !important;
+}
+html.dark .text-rose-900,
+html.dark .text-rose-800,
+html.dark .text-rose-700 {
+  color: #FDA4AF !important;
+}
+
+/* Indigo / Purple / Canva Accent Badges */
+html.dark .bg-indigo-50,
+html.dark .bg-indigo-50\/70,
+html.dark .bg-indigo-50\/60,
+html.dark .bg-indigo-50\/50,
+html.dark .bg-indigo-100,
+html.dark .bg-indigo-100\/60,
+html.dark .bg-purple-50 {
+  background-color: rgba(125, 42, 232, 0.18) !important;
+  border-color: rgba(125, 42, 232, 0.35) !important;
+  color: #C4B5FD !important;
+}
+html.dark .text-indigo-900,
+html.dark .text-indigo-800,
+html.dark .text-indigo-700 {
+  color: #DDD6FE !important;
+}
+
+/* Sky / Blue Badges */
+html.dark .bg-sky-50,
+html.dark .bg-sky-100 {
+  background-color: rgba(0, 196, 204, 0.15) !important;
+  border-color: rgba(0, 196, 204, 0.3) !important;
+  color: #38BDF8 !important;
+}
+html.dark .text-sky-900,
+html.dark .text-sky-800 {
+  color: #7DD3FC !important;
+}
+
+/* Form Inputs & Selects in Dark Mode */
+html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+html.dark textarea,
+html.dark select {
+  background-color: #13171F !important;
+  color: #FFFFFF !important;
+  border-color: #262E3D !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+  border-color: #7D2AE8 !important;
+  box-shadow: 0 0 0 2px rgba(125, 42, 232, 0.35) !important;
+}
+
+/* Modals & Dialogs in Dark Mode */
+html.dark .fixed .bg-white {
+  background-color: #181E27 !important;
+  border: 1px solid #262E3D !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Resume Live Preview Sheet in Dark Mode */
+html.dark #printable-resume {
+  background-color: #151A22 !important;
+  color: #E2E8F0 !important;
+  border-color: #262E3D !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
+}
+html.dark #printable-resume h1,
+html.dark #printable-resume h3 {
+  color: #FFFFFF !important;
+}
+html.dark #printable-resume .border-slate-800 {
+  border-color: #3B4556 !important;
+}
+html.dark #printable-resume .border-slate-200 {
+  border-color: #262E3D !important;
+}
+
+/* Print styling for ATS & Clean Resume Export */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-resume, #printable-resume * {
+    visibility: visible;
+  }
+  #printable-resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Custom sleek Canva-style scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2D3748;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4A5568;
+}

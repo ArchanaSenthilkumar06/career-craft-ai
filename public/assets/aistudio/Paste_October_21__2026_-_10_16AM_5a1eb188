@@ -1,0 +1,865 @@
+# MASTER BUILD PROMPT: MINDMATE CAREER AI
+## An integrated AI platform for student performance, personalized learning, resume building, and career growth
+
+Act as a senior full-stack software engineer, AI engineer, UI/UX designer, database architect, and product designer.
+
+Build a polished, responsive, full-stack-ready web application called **MindMate Career AI**.
+
+Do not build only a landing page, static mockup, or resume generator. Build a cohesive application with reusable frontend components, a structured backend, database integration code, LLM integration code, API routes, validation, error handling, and complete setup instructions.
+
+The application should serve:
+- School and college students
+- Undergraduate and postgraduate students
+- Fresh graduates
+- Internship applicants
+- Job seekers
+- Working professionals
+- Adults changing careers or returning to employment
+
+The core product vision is:
+
+**Understand yourself → Analyze performance and skills → Learn what you need → Build proof of your abilities → Improve your resume → Prepare for opportunities → Grow your career.**
+
+The experience should combine the educational and student-performance concept of Mind Mate AI with a complete AI resume and career improvement studio.
+
+---
+
+# 1. REQUIRED TECHNOLOGY STACK
+
+Use the following stack consistently.
+
+## Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router for navigation
+- Lucide React for icons
+- Recharts for charts and visualizations
+- React Hook Form with Zod for form validation where appropriate
+
+## Backend
+- Node.js
+- Express.js
+- TypeScript
+- REST API architecture
+- Zod for request validation
+- Centralized error-handling middleware
+- Structured logging and appropriate HTTP status codes
+
+## Database
+- MongoDB
+- Mongoose ODM
+- A centralized MongoDB connection module
+- Environment-based connection configuration
+- Proper schemas, indexes, timestamps, and validation
+
+## AI integration
+- Google Gemini API through the official supported JavaScript/TypeScript SDK
+- Keep the LLM provider behind a dedicated server-side service interface so another provider can be configured later
+- Use structured JSON outputs and validate model responses before returning them to the frontend
+- Handle API errors, rate limits, malformed responses, and unavailable credentials gracefully
+
+Use a supported, current SDK and a model identifier configurable through environment variables. Do not hardcode an assumed model name throughout the application.
+
+## File handling
+- Multer for controlled uploads
+- A suitable PDF text-extraction library
+- Mammoth or another appropriate parser for DOCX files
+- Support TXT as an additional simple input format
+
+Validate file type, size, parsing errors, and empty extracted text. Do not trust the filename or MIME type alone. Do not execute uploaded files.
+
+## Developer tools
+- VS Code
+- Git and GitHub readiness
+- npm
+- `.env.example`
+- `.gitignore`
+- Clear local development scripts
+
+Do not add unnecessary infrastructure such as Kafka, microservices, Redis, or a separate Python backend unless a real requirement justifies it. Keep the initial architecture achievable by a student developer.
+
+---
+
+# 2. APPLICATION DESIGN SYSTEM
+
+Create an original, premium visual identity.
+
+Product name: **MindMate Career AI**
+
+Suggested tagline:
+"Know your strengths. Grow your skills. Build your future."
+
+## Visual direction
+
+Use a hybrid design:
+- Dark midnight-navy sidebar
+- Soft off-white or very light lavender main background
+- Violet and electric-blue accents
+- Teal for positive progress
+- Warm amber for attention and recommendations
+- Subtle gradients used sparingly
+- Rounded cards with restrained shadows
+- Clean typography
+- Spacious, well-aligned content
+- Beautiful empty states and helpful microcopy
+- Smooth but restrained transitions
+- Accessible color contrast and keyboard navigation
+
+Use a modern professional SaaS dashboard aesthetic. The design should be impressive in a college hackathon demo but also suitable for working professionals.
+
+Use a playful personality for learning interactions and a more restrained, professional appearance for resumes, job applications, and reports.
+
+Do not use excessive emojis, cluttered layouts, generic templates, or giant decorative gradients.
+
+## Layout
+
+Desktop:
+- Persistent left sidebar
+- Top navigation with page title, search or contextual actions, notifications placeholder only when functional, and profile menu
+- Main content area with responsive cards and charts
+
+Mobile:
+- Collapsible navigation
+- Stacked cards
+- Touch-friendly controls
+- Responsive forms and editors
+- No horizontal overflow
+
+Create a consistent design system with reusable buttons, cards, badges, modals, tabs, charts, skeleton loaders, alerts, tooltips, and empty states.
+
+---
+
+# 3. USER ONBOARDING AND PERSONALIZATION
+
+Create a welcome and onboarding experience.
+
+Ask the user to choose their current pathway:
+
+1. School or college student
+2. Graduate or internship applicant
+3. Experienced professional
+4. Career changer or returning professional
+
+Collect only relevant profile information:
+- Display name
+- Career or learning goal
+- Current education or professional stage
+- Target role or field
+- Skills the user wants to develop
+- Available learning time, if they want a personalized schedule
+
+For students, allow entry of subjects, assessment marks, dates, and learning goals.
+
+For graduates, allow education, certifications, projects, internships, achievements, and target job descriptions.
+
+For professionals, support current experience, existing responsibilities, transferable skills, certifications, career goals, and target roles.
+
+For career changers, support previous experience, transferable skills, desired roles, and learning goals.
+
+Make optional fields genuinely optional. Never assume that a working adult needs academic marks or that every student has employment experience.
+
+Provide a demo mode so a judge can explore the interface without creating an account.
+
+Clearly distinguish demo data from real user data.
+
+---
+
+# 4. OVERVIEW DASHBOARD
+
+Create a personalized dashboard that changes based on the user's pathway.
+
+Include:
+- Welcome message
+- Career or academic goal
+- Recent activity
+- Learning progress
+- Recommended next action
+- Resume status
+- Skill development overview
+- Upcoming learning tasks
+- Recent analyses
+- Quick actions
+
+For a student, emphasize subjects, assessment trends, study priorities, and learning activities.
+
+For a graduate, emphasize resume readiness, job requirements, projects, skill gaps, and applications.
+
+For a working professional, emphasize transferable skills, experience, career goals, resume achievements, and relevant upskilling.
+
+Do not show fabricated performance scores or claim that a user has completed an activity without evidence.
+
+---
+
+# 5. MIND MATE STUDENT PERFORMANCE ANALYZER
+
+Build a dedicated academic performance module.
+
+Allow the user to enter:
+- Subject names
+- Assessment names and dates
+- Marks obtained and maximum marks
+- Optional attendance data
+- Topics or concepts they find difficult
+- Confidence ratings
+- Academic goals
+
+Include a clear form and a structured performance table.
+
+## Analysis capabilities
+
+Implement deterministic calculations for:
+- Marks percentages
+- Subject-wise performance
+- Average performance
+- Performance changes across assessments
+- Stronger and weaker subject areas based on the available data
+- Missing assessments and insufficient-data warnings
+
+Use charts to visualize:
+- Subject performance
+- Assessment trends
+- Progress toward user-defined goals
+
+Do not label a subject as a weakness based on one mark alone without explaining the available evidence. Make comparisons configurable and explain how categories are determined.
+
+## Study recommendations
+
+Provide recommendations that connect to the actual submitted data.
+
+Examples:
+- Prioritize a topic with consistently low assessment results.
+- Schedule revision before an upcoming assessment.
+- Practice questions on a topic where quiz performance is low.
+- Reassess a topic after completing a learning activity.
+
+Ask the student to confirm their available study time and preferred learning style before generating a schedule.
+
+Allow the user to edit the timetable and mark sessions as completed.
+
+When new marks or quiz results are added, recalculate the relevant metrics and update recommendations.
+
+Important: performance analysis should use actual calculations. Use the LLM for explanations and planning, not as the source of numerical calculations.
+
+---
+
+# 6. AI LEARNING MENTOR
+
+Build a personalized AI learning companion.
+
+Features:
+- Ask questions about study topics
+- Request beginner-friendly explanations
+- Generate practice exercises
+- Generate multiple-choice quizzes
+- Explain incorrect answers
+- Create revision plans
+- Break large learning goals into manageable tasks
+- Recommend mini-projects
+- Track learning activities
+- Recommend a next step based on available progress evidence
+
+Provide a chat interface with a clear conversation layout.
+
+Allow users to select a goal, difficulty, topic, and available study time.
+
+Quiz behavior:
+- Display one question or a clearly organized set of questions
+- Accept the user's answer
+- Check answers using an answer key or validated logic
+- Explain the correct answer
+- Track the score
+- Recommend revision for missed topics
+
+Do not claim that a student has mastered a subject simply because they read an explanation.
+
+The learning mentor should adapt recommendations using assessment results, quiz results, and self-reported confidence where available.
+
+Include a disclaimer that AI explanations may contain mistakes and important academic answers should be checked against trusted learning materials.
+
+---
+
+# 7. RESUME BUILDER FOR STUDENTS, GRADUATES, AND PROFESSIONALS
+
+Build a complete resume creation and editing module.
+
+Allow users to create and edit:
+- Contact details
+- Professional summary
+- Education
+- Work experience
+- Internships
+- Projects
+- Technical skills
+- Soft skills
+- Certifications
+- Achievements
+- Publications or extracurricular activities where relevant
+
+Support different resume structures:
+- Student resume
+- Internship resume
+- Graduate or entry-level resume
+- Experienced professional resume
+- Career-change resume
+
+Do not force empty sections into every resume.
+
+## Resume editor
+
+Provide:
+- A structured form
+- A live resume preview
+- Section-by-section editing
+- Professional templates
+- Clear formatting
+- Add and remove section controls
+- Reorderable sections where practical
+- Save and reopen drafts
+- Download or export functionality when implemented
+- Validation for missing essential information
+
+Support appropriate resume templates with professional typography and clear hierarchy.
+
+Use ATS-friendly structure as a design goal without claiming guaranteed ATS compatibility.
+
+For graduates and professionals, support achievement-focused writing that highlights real responsibilities, outcomes, project scope, and transferable skills.
+
+For students with limited experience, help highlight genuine academic projects, coursework, volunteering, certifications, and practical work.
+
+Never invent employers, employment dates, qualifications, projects, metrics, or achievements.
+
+When a detail is missing, ask the user to supply it.
+
+---
+
+# 8. AI RESUME IMPROVEMENT STUDIO
+
+Allow users to paste a resume or upload a supported document, and provide a job description for analysis.
+
+## Analysis output
+
+Identify:
+- Relevant job requirements
+- Skills evidenced in the resume
+- Keywords found
+- Keywords not found in the supplied resume
+- Potentially relevant experience
+- Project relevance
+- Resume section quality
+- Possible clarity and grammar issues
+- Suggested improvements
+- Missing information that needs user confirmation
+
+Show an explainable match indicator based on a documented calculation. Do not call it an official ATS score or a hiring probability.
+
+Clearly distinguish:
+- Evidence found
+- Related evidence needing review
+- Requirement not found in the resume
+- Information requiring user confirmation
+
+Do not infer that a missing keyword means the user lacks the skill.
+
+## Resume suggestions
+
+For each suggestion, show:
+- Original text
+- Proposed revision
+- Why the revision may help
+- Supporting resume evidence
+- Any unverified information that needs confirmation
+- Accept and Reject controls
+
+Allow the user to approve edits individually.
+
+Do not automatically insert unsupported claims into the final resume.
+
+For achievements that could benefit from numbers, ask the user for accurate metrics rather than inventing numbers.
+
+Include an option to improve the resume without a job description, using general professional-writing guidelines.
+
+---
+
+# 9. MULTI-AGENT CAREER WORKFLOW
+
+Implement a modular, server-side workflow that separates analysis responsibilities. These may be separate LLM calls or deterministic processing tasks, coordinated by a backend orchestrator.
+
+Do not create fake agents that merely animate a progress bar.
+
+## Agent 1: Student Performance Analyst
+Analyzes submitted assessment data, computes trends using application logic, and prepares a structured summary of study priorities.
+
+## Agent 2: Job Description Analyst
+Extracts job responsibilities, required skills, preferred skills, and relevant keywords from the job description.
+
+## Agent 3: Resume Evidence Analyst
+Extracts education, experience, skills, and projects explicitly supported by the supplied resume.
+
+## Agent 4: Skill-Gap Analyst
+Compares job requirements with resume evidence and distinguishes supported matches, related evidence, and requirements not found.
+
+## Agent 5: Learning Planner
+Creates a personalized study or career-skills roadmap using the identified learning needs, target role, available time, and user preferences.
+
+## Agent 6: Resume Fact Checker
+Checks proposed changes against the original resume and user-confirmed facts. Flags invented experience, unsupported skills, exaggerated claims, and unverified metrics.
+
+## Workflow orchestration
+
+Create a clear workflow:
+1. Validate input.
+2. Analyze job requirements.
+3. Extract resume evidence.
+4. Calculate skill and keyword comparisons.
+5. Generate improvement suggestions.
+6. Check factual support.
+7. Generate a learning roadmap.
+8. Return validated structured results.
+
+Use typed input and output schemas.
+
+Show actual task statuses and results returned by the backend.
+
+If a task fails, show an appropriate error and allow a retry where safe. Do not mark failed tasks as completed.
+
+Treat uploaded text and job descriptions as untrusted data, not as instructions to override the application's system behavior.
+
+Do not claim that a factual review guarantees truth. Show the supporting evidence and ask the user to verify the final content.
+
+---
+
+# 10. CONNECT ACADEMIC PERFORMANCE WITH CAREER DEVELOPMENT
+
+This is the main integration between Mind Mate AI and the resume platform.
+
+Build a unified development plan that can connect:
+- Student-selected career goals
+- Academic performance trends
+- Quiz results and learning activity
+- Self-reported skills
+- Resume evidence
+- Target job requirements
+
+Example journey:
+
+A student selects a software development internship.
+
+The job analyst extracts Python, SQL, and API-related requirements.
+
+The resume analyst identifies which skills are supported by the student's actual projects and experience.
+
+The gap analyst identifies requirements not evidenced in the resume.
+
+The learning planner suggests relevant learning activities and mini-projects.
+
+The student completes activities and records their results.
+
+The student may add a completed project or newly developed skill to the resume only after supplying accurate details and reviewing the proposed content.
+
+The resume analyzer then evaluates the updated resume against the target role.
+
+For a graduate or experienced professional, use relevant employment history, certifications, projects, transferable skills, and career goals instead of relying on academic marks.
+
+Do not automatically infer professional competence from academic marks or infer academic ability from job history.
+
+Keep the distinction between academic progress, learning activity completion, self-reported skills, and independently demonstrated skills.
+
+---
+
+# 11. FUN FEATURES AND FRIENDLY PERSONALITY
+
+Add a playful layer that makes learning less stressful without making the career tools look childish.
+
+## Features
+
+### MindMate personality modes
+Allow users to choose:
+- Friendly study buddy
+- Calm mentor
+- Strict focus coach
+- Playful motivator
+
+Keep all modes respectful and supportive.
+
+### XP and achievement badges
+Award points for actual recorded activities, such as:
+- Completing a quiz
+- Finishing a study session
+- Completing a learning task
+- Reviewing a resume suggestion
+- Completing a verified project entry
+
+Do not award points for merely clicking a button repeatedly.
+
+### Streaks and progress celebrations
+Track real completed activities and provide small celebrations for milestones.
+
+Do not shame users for missing a day. Allow breaks and make progress recoverable.
+
+### Funny focus messages
+Include optional, lighthearted messages such as:
+- "Your future self just sent a thank-you note."
+- "One focused session beats five hours of panic scrolling."
+- "Your resume is getting stronger. No imaginary achievements allowed!"
+- "Boss battle unlocked: the topic you've been avoiding."
+- "Tiny progress still counts. Keep going."
+
+### Career quest board
+Turn development goals into optional missions:
+- Finish a practice quiz
+- Improve one resume bullet
+- Complete a project milestone
+- Learn a new concept
+- Practice an interview question
+
+### Focus timer
+Create a working focus timer with start, pause, resume, and reset controls. Provide optional 25-minute focus and 5-minute break presets.
+
+### Optional fun mode
+Let users turn playful messages, animations, and gamification on or off. Keep the default professional in resume and job application sections.
+
+All scores, streaks, badges, and timers must use actual application state and recorded activities rather than decorative mock values.
+
+---
+
+# 12. CAREER AND INTERVIEW PREPARATION
+
+Create an interview preparation module based on the user's selected role and supplied information.
+
+Support:
+- Technical questions
+- Behavioral questions
+- Project-based questions
+- Role-specific practice
+- Resume-based interview questions
+- Sample answer structures
+- Feedback on user-written answers
+
+Use only verified resume details and user-confirmed information when generating questions about the user's background.
+
+For behavioral questions, teach a structure such as STAR without inventing the user's personal story.
+
+Allow users to save practice sessions and review their answers.
+
+Provide job-search preparation checklists and guidance without claiming to guarantee interviews or offers.
+
+---
+
+# 13. MONGODB DATABASE INTEGRATION
+
+Implement real MongoDB connection code using Mongoose.
+
+Create a centralized file such as:
+
+`server/src/config/db.ts`
+
+Read the connection string from:
+
+`MONGODB_URI`
+
+Provide an `.env.example` file containing a placeholder value, not a real credential.
+
+Create suitable Mongoose models for the initial application:
+- User profile
+- Academic performance record
+- Learning plan
+- Quiz result
+- Resume
+- Resume analysis report
+- Career goal
+- Learning activity
+
+Use references or embedded documents appropriately. Avoid storing redundant or unnecessary personal information.
+
+Add timestamps and appropriate indexes.
+
+Implement:
+- Database connection on server startup
+- Clear connection error reporting
+- Safe handling of missing environment variables
+- Graceful shutdown
+- Validated CRUD endpoints for the implemented features
+
+Use a repository or service layer where it improves maintainability.
+
+Important database behavior:
+- Do not silently fall back to fake database persistence when MongoDB is unavailable.
+- Show a clear configuration or service error.
+- Keep demo mode explicitly separate from real persistence.
+- Do not log database passwords or full connection strings.
+- Do not hardcode a local MongoDB address into application logic.
+- We will replace the placeholder connection URI with our actual database configuration later in VS Code.
+
+Create setup instructions for both a local MongoDB instance and MongoDB Atlas.
+
+Do not put database credentials in frontend code.
+
+---
+
+# 14. LLM API INTEGRATION
+
+Implement server-side AI integration code.
+
+Create a centralized AI service module and read the provider's API key from a backend environment variable such as:
+
+`GEMINI_API_KEY`
+
+Allow the model identifier to be configured through an environment variable.
+
+The frontend must call our Express API. It must never call the model provider with a secret API key embedded in the browser.
+
+Implement:
+- Input validation
+- Prompt templates
+- Structured output schemas
+- Output validation
+- Error handling
+- Rate-limit handling
+- Request timeouts where appropriate
+- Reasonable input size limits
+- Clear messages for missing API configuration
+
+For resume analysis, instruct the model to treat resume and job-description content as untrusted input.
+
+For learning plans, base recommendations on the supplied performance information and user goals.
+
+Never use the model to fabricate marks, skills, experience, or achievements.
+
+If the API key is missing, show an explicit configuration message or a clearly labeled demo mode. Do not return fabricated AI results while claiming the model was called.
+
+Include `.env.example` and document where the actual key must be configured locally.
+
+Do not commit `.env` files.
+
+---
+
+# 15. BACKEND API ROUTES
+
+Create a consistent `/api/v1` namespace.
+
+Implement suitable routes for the features that are genuinely built, including:
+
+Health:
+- `GET /api/v1/health`
+
+Student performance:
+- `POST /api/v1/performance/analyze`
+- `GET /api/v1/performance`
+- `POST /api/v1/performance/records`
+
+Learning:
+- `POST /api/v1/learning/plan`
+- `POST /api/v1/learning/quiz`
+- `POST /api/v1/learning/quiz/submit`
+- `GET /api/v1/learning/progress`
+
+Resume:
+- `POST /api/v1/resumes`
+- `GET /api/v1/resumes`
+- `GET /api/v1/resumes/:id`
+- `PATCH /api/v1/resumes/:id`
+- `POST /api/v1/resumes/:id/analyze`
+- `POST /api/v1/resumes/:id/suggestions/:suggestionId/decision`
+
+Career:
+- `POST /api/v1/career/roadmap`
+- `POST /api/v1/career/interview-practice`
+
+Reports:
+- `GET /api/v1/reports`
+- `GET /api/v1/reports/:id`
+
+Adjust routes to match the implemented data model. Do not leave a route presented as implemented if it is only a placeholder.
+
+Validate request bodies, path parameters, file uploads, and model outputs.
+
+Return consistent JSON responses and appropriate HTTP status codes.
+
+Add CORS configuration for the local frontend origin through an environment variable.
+
+Add basic rate limiting to expensive AI endpoints and enforce reasonable payload sizes.
+
+Do not add public database endpoints or expose arbitrary database queries.
+
+---
+
+# 16. AUTHENTICATION AND PRIVACY
+
+Prepare a sensible path for authentication without making the first demo unnecessarily difficult.
+
+If authentication is implemented, use secure password hashing and secure session or token handling. Never store plaintext passwords.
+
+Do not invent a complete authentication system that only looks functional.
+
+If full authentication is outside the first generated version:
+- Provide a clearly labeled demo experience.
+- Isolate user-related data access behind service functions.
+- Document that production deployment requires authentication and authorization.
+- Do not expose private user records through public endpoints.
+
+For any real user data:
+- Validate access permissions.
+- Avoid logging resumes or personal information.
+- Minimize stored personal information.
+- Allow deletion of saved records when supported.
+- Explain the use of AI services before sending personal text to them.
+
+---
+
+# 17. PROJECT FILE STRUCTURE
+
+Prefer a simple monorepo structure similar to:
+
+mindmate-career-ai/
+  client/
+    src/
+      components/
+      pages/
+      layouts/
+      hooks/
+      services/
+      types/
+      utils/
+      App.tsx
+      main.tsx
+    public/
+    package.json
+    vite.config.ts
+  server/
+    src/
+      config/
+        db.ts
+      controllers/
+      routes/
+      services/
+        ai/
+        analysis/
+        learning/
+        resume/
+      models/
+      middleware/
+      schemas/
+      utils/
+      app.ts
+      server.ts
+    package.json
+  .env.example
+  .gitignore
+  package.json
+  README.md
+
+You may adapt the structure if a better implementation is justified, but keep the frontend and backend clearly separated.
+
+Create scripts for installing dependencies, running the frontend, running the backend, and running both in development where practical.
+
+Provide clear setup instructions for Windows users using PowerShell or the VS Code terminal.
+
+Include a README explaining:
+- Prerequisites
+- Installation
+- Environment configuration
+- Database setup
+- LLM API setup
+- How to run the application
+- Available routes
+- Demo mode versus real integrations
+- Common errors and fixes
+
+---
+
+# 18. TESTING AND RELIABILITY
+
+Add tests for core deterministic functionality where practical:
+- Performance percentage calculations
+- Trend calculations
+- Skill and keyword matching
+- Request validation
+- Resume suggestion approval
+- API response handling
+
+Handle:
+- Empty input
+- Invalid marks
+- Missing job descriptions
+- Unsupported file formats
+- Malformed uploaded documents
+- MongoDB connection failures
+- Missing API keys
+- LLM provider failures
+- Invalid model output
+- Duplicate requests
+- Empty database results
+
+Use clear error messages and never silently replace failed real results with mock data.
+
+Ensure that all visible buttons either work or are explicitly labeled as coming soon.
+
+Do not use hardcoded success messages to simulate database saves or real AI execution.
+
+---
+
+# 19. IMPLEMENTATION PRIORITIES
+
+Build the application in coherent phases.
+
+Phase 1:
+- Premium responsive UI
+- Navigation
+- Dashboard
+- Student performance forms and calculations
+- Resume builder
+- Resume/job analysis interface
+- Learning mentor interface
+- Career roadmap
+- Demo mode with clearly labeled sample data
+
+Phase 2:
+- Express backend
+- Real performance and matching logic
+- Validated API endpoints
+- MongoDB connection and data models
+- Real save/retrieve functionality
+
+Phase 3:
+- LLM API integration
+- Structured analysis outputs
+- Multi-agent workflow
+- Factual verification
+- Personalized learning recommendations
+
+Phase 4:
+- Quiz evaluation
+- Career quests and XP
+- Interview preparation
+- Export functionality
+- Tests and final UI polish
+
+If the environment supports generating the complete project, create all required files. If output limits prevent completing everything at once, prioritize a working project foundation and clearly identify remaining phases instead of producing a giant incomplete file.
+
+Do not claim that unimplemented phases are finished.
+
+---
+
+# 20. FINAL QUALITY REQUIREMENTS
+
+The finished product must feel like one connected application, not several unrelated pages.
+
+It should be beautiful enough for a hackathon demo and maintainable enough for further development in VS Code.
+
+Prioritize:
+1. A polished, coherent interface
+2. A working student performance analyzer
+3. A useful resume builder for graduates and professionals
+4. Evidence-based resume improvement
+5. A meaningful learning mentor
+6. A real, observable AI-agent workflow
+7. Proper MongoDB and LLM integration code
+8. Honest demo states, validation, privacy, and error handling
+
+The central message of the application is:
+
+"MindMate Career AI helps people understand their strengths, improve what they need to learn, present their real abilities confidently, and take practical steps toward their next career opportunity."
+
+Now generate the application. Begin with the project structure, the design system, the main navigation, and the essential pages. Make the code modular, ensure the setup instructions are complete, and make the generated result ready for local configuration and further development in VS Code.
